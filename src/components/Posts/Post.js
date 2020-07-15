@@ -22,7 +22,7 @@ console.log("line10 POST.js",{likePost})
         <img alt="post thumbnail" className="post-image" src={post.imageUrl} />
       </div>
 
-      <LikeSection likeCount={post.likes} likePost={()=>likePost(post.id)} post={post} />
+      <LikeSection likeCount={post.likes} likePost={likePost} post={post} />
 
       <Comments comments={post.comments} />
       

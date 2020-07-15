@@ -2,22 +2,19 @@
 // console.log your props and see what to use so this component will display the correct likes count.
 // You will also need to add an onClick event handler that utilizes `likePost` to increase the likes count.
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
 
-const LikeSection = props => {
+const LikeSection = (props) => {
   // Make sure the parent of LikeSection is passing the right props!
-  const { likePost, likeCount,post } = props
+  const { likePost, likeCount, post } = props;
 
-  console.log("LikeSection line11",{props})
+  console.log("LikeSection line11", { props });
 
   return (
     <div>
-      <div
-        className="like-section"
-        key="likes-icons-container"
-      >
-        <div onClick={likePost} className="like-section-wrapper">
+      <div className="like-section" key="likes-icons-container">
+        <div onClick={() => likePost(post.id)} className="like-section-wrapper">
           <FontAwesomeIcon icon={faHeart} />
         </div>
         <div className="like-section-wrapper">
@@ -26,7 +23,7 @@ const LikeSection = props => {
       </div>
       <p className="like-number">{likeCount} likes</p>
     </div>
-  )
+  );
 };
 
 export default LikeSection;
