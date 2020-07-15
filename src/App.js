@@ -7,40 +7,31 @@ Look at each file to see what props need to be passed.
 */
 
 // Import the state hook
-import React, {
-  useState
-} from 'react';
-import Posts from './components/Posts/Posts'
-import SearchBar from './components/SearchBar/SearchBar'
-import dummyData from './dummy-data'
+import React, { useState } from "react";
+import Posts from "./components/Posts/Posts";
+import SearchBar from "./components/SearchBar/SearchBar";
+import dummyData from "./dummy-data";
 
 // Import the Posts (plural!) and SearchBar components, since they are used inside App component
 // Import the dummyData
-import './App.css';
+import "./App.css";
 
 const App = () => {
-  const [posts, setPosts] = useState(dummyData)
-  const [searchTerm, setSearchTerm] = useState('🔍')
+  const [posts, setPosts] = useState(dummyData);
+  const [searchTerm, setSearchTerm] = useState("🔍");
 
   // Create a state called 'posts' to hold the list of posts, initializing to dummyData.
   // To make the search bar work (which is stretch) we'd need another state to hold the search term.
 
-  // function likePost (postId) {
-  //   setPosts(
-  //     posts.map(function (post) {
-  //       if (post.id == postId) {
-  //         {
-  //           [...post], (post.likes += 1)
-  //         }
-  //       } else {
-  //         {
-  //           [...post]
-  //         }
-  //       }
-  //     })
-  //   )
-  // }
-function likePost(){}
+  function likePost(postId) {
+    console.log("line27App.js", { postId });
+
+    setPosts(
+      posts.map((post) =>
+        post.id == postId ? { ...post, likes: post.likes + 1 } : post
+      )
+    );
+  }
   // This function is passed into nested components using props, to allow them to update application state.
   // It takes a post id as its only argument.
 
@@ -53,11 +44,11 @@ function likePost(){}
   //  - otherwise just return the post object unchanged.
 
   return (
-    <div className='App'>
+    <div className="App">
       <Posts likePost={likePost} posts={posts} />
       <SearchBar setSearchTerm={setSearchTerm} />
     </div>
-  )
+  );
 };
 
-export default App
+export default App;
